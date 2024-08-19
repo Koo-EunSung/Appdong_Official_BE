@@ -1,4 +1,4 @@
-package com.appdong.webpage.config;
+package com.appdong.website.config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

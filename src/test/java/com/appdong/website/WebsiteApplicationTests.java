@@ -1,10 +1,10 @@
-package com.appdong.webpage;
+package com.appdong.website;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class WebpageApplicationTests {
+class WebsiteApplicationTests {
 
 	@Test
 	void contextLoads() {
