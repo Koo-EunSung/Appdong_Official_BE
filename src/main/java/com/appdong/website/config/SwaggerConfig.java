@@ -1,4 +1,4 @@
-package com.appdong.webpage.config;
+package com.appdong.website.config;
 
 
 import io.swagger.v3.oas.models.Components;
