@@ -44,4 +44,11 @@ public class FormController {
     public ResponseEntity<FormResponse.Detail> updateForm(@RequestBody FormRequest.Update request) {
         return ResponseEntity.ok(formService.update(request));
     }
+
+    @DeleteMapping("/{formId}")
+    @Operation(summary = "설문지 삭제 API")
+    public ResponseEntity<Void> deleteForm(@PathVariable Long formId) {
+        formService.delete(formId);
+        return new ResponseEntity<>(HttpStatus.OK);
+    }
 }

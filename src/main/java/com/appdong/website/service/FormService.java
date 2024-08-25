@@ -70,4 +70,10 @@ public class FormService {
 
         return FormResponse.Detail.from(form);
     }
+
+    @Transactional
+    public void delete(Long formId) {
+        formRepository.deleteById(formId);
+        //ToDo: AnswerSheet에 대한 처리 추가 필요
+    }
 }
