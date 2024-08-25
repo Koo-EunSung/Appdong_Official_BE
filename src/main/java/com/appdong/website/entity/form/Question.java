@@ -1,5 +1,6 @@
 package com.appdong.website.entity.form;
 
+import com.appdong.website.entity.form.converter.StringListConverter;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -30,6 +31,6 @@ public class Question {
     @OneToMany(mappedBy = "question")
     private List<Answer> answers = new ArrayList<>();
 
-    @ElementCollection
-    private List<String> choices;
+    @Convert(converter = StringListConverter.class)
+    private List<String> choice;
 }
