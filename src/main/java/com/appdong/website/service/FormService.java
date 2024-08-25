@@ -1,6 +1,7 @@
 package com.appdong.website.service;
 
 import com.appdong.website.dto.form.FormRequest;
+import com.appdong.website.dto.form.FormResponse;
 import com.appdong.website.dto.question.QuestionRequest;
 import com.appdong.website.entity.form.Form;
 import com.appdong.website.entity.form.Question;
@@ -28,5 +29,13 @@ public class FormService {
         for (QuestionRequest.Create question : request.getQuestions())
             questions.add(new Question(null, form, question.getType(), question.getTitle(), question.getDescription(), null, question.getChoices()));
         questionRepository.saveAllInBulk(questions);
+    }
+
+    @Transactional(readOnly = true)
+    public List<FormResponse.Introduction> getActiveForm() {
+        return formRepository.findAllByActiveIsTrue()
+                .stream()
+                .map(FormResponse.Introduction::from)
+                .toList();
     }
 }
