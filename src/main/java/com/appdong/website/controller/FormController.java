@@ -32,4 +32,10 @@ public class FormController {
     public ResponseEntity<List<FormResponse.Introduction>> getActiveFormIntro() {
         return ResponseEntity.ok().body(formService.getActiveForm());
     }
+
+    @GetMapping("/{formId}")
+    @Operation(summary = "설문지 상세 조회 API")
+    public ResponseEntity<FormResponse.Detail> getFormDetail(@PathVariable Long formId) {
+        return ResponseEntity.ok().body(formService.getDetail(formId));
+    }
 }

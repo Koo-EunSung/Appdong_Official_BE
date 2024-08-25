@@ -38,4 +38,11 @@ public class FormService {
                 .map(FormResponse.Introduction::from)
                 .toList();
     }
+
+    @Transactional(readOnly = true)
+    public FormResponse.Detail getDetail(Long id) {
+        return formRepository.findById(id)
+                .map(FormResponse.Detail::from)
+                .orElse(null);
+    }
 }
