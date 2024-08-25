@@ -9,6 +9,7 @@ import org.springframework.data.annotation.LastModifiedBy;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -26,7 +27,7 @@ public class AnswerSheet {
     private Form form;
 
     @OneToMany(mappedBy = "answerSheet", cascade = CascadeType.ALL, orphanRemoval = true)
-    private List<Answer> answers;
+    private List<Answer> answers = new ArrayList<>();
 
     @Column(nullable = false)
     private String name;
@@ -39,4 +40,10 @@ public class AnswerSheet {
 
     @LastModifiedBy
     private LocalDateTime updatedAt;
+
+    public AnswerSheet(Form form, String name, String studentId) {
+        this.form = form;
+        this.name = name;
+        this.studentId = studentId;
+    }
 }
