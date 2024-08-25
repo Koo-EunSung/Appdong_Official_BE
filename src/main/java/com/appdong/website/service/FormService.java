@@ -21,12 +21,12 @@ public class FormService {
 
     @Transactional
     public void create(FormRequest.Create request) {
-        Form form = new Form(null, request.getTitle(), request.getDescription(), null, null);
+        Form form = new Form(request.getTitle(), request.getDescription());
         formRepository.save(form);
 
         List<Question> questions = new ArrayList<>();
-        for(QuestionRequest.Create question : request.getQuestions())
+        for (QuestionRequest.Create question : request.getQuestions())
             questions.add(new Question(null, form, question.getType(), question.getTitle(), question.getDescription(), null, question.getChoices()));
-        questionRepository.saveAll(questions);
+        questionRepository.saveAllInBulk(questions);
     }
 }
