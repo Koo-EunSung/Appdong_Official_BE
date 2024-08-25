@@ -38,4 +38,10 @@ public class FormController {
     public ResponseEntity<FormResponse.Detail> getFormDetail(@PathVariable Long formId) {
         return ResponseEntity.ok().body(formService.getDetail(formId));
     }
+
+    @PatchMapping()
+    @Operation(summary = "설문지 수정 API")
+    public ResponseEntity<FormResponse.Detail> updateForm(@RequestBody FormRequest.Update request) {
+        return ResponseEntity.ok(formService.update(request));
+    }
 }

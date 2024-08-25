@@ -43,4 +43,13 @@ public class Form {
         this.description = description;
         this.active = true;
     }
+
+    public void activationToggle() {
+        this.active = !this.active;
+    }
+
+    public void update(String title, String description) {
+        this.title = title;
+        this.description = description;
+    }
 }

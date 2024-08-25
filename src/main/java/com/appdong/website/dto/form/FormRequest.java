@@ -18,4 +18,13 @@ public class FormRequest {
         @NotEmpty
         private List<QuestionRequest.Create> questions;
     }
+
+    @Getter
+    @AllArgsConstructor
+    public static class Update {
+        private Long id;
+        private String title;
+        private String description;
+        private boolean updateActive;
+    }
 }

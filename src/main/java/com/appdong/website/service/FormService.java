@@ -13,6 +13,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.NoSuchElementException;
 
 @Service
 @RequiredArgsConstructor
@@ -44,5 +45,29 @@ public class FormService {
         return formRepository.findById(id)
                 .map(FormResponse.Detail::from)
                 .orElse(null);
+    }
+
+    @Transactional
+    public FormResponse.Detail update(FormRequest.Update request) {
+        Form form = formRepository.findById(request.getId())
+                .orElseThrow(() -> new NoSuchElementException("해당 설문지가 존재하지 않습니다."));
+        String title = form.getTitle();
+        String description = form.getDescription();
+
+        if (request.getTitle() != null) {
+            if (request.getTitle().isEmpty())
+                throw new IllegalArgumentException("설문지의 제목은 비워둘 수 업습니다.");
+            title = request.getTitle();
+        }
+
+        if (request.getDescription() != null)
+            description = request.getDescription();
+
+        form.update(title, description);
+
+        if(request.isUpdateActive())
+            form.activationToggle();
+
+        return FormResponse.Detail.from(form);
     }
 }
