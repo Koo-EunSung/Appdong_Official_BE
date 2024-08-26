@@ -2,6 +2,8 @@ package com.appdong.website.service;
 
 import com.appdong.website.dto.answer.AnswerRequest;
 import com.appdong.website.dto.answerSheet.AnswerSheetRequest;
+import com.appdong.website.dto.answerSheet.AnswerSheetResponse;
+import com.appdong.website.dto.question.QuestionResponse;
 import com.appdong.website.entity.form.Answer;
 import com.appdong.website.entity.form.AnswerSheet;
 import com.appdong.website.entity.form.Form;
@@ -13,10 +15,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Map;
-import java.util.NoSuchElementException;
+import java.util.*;
 import java.util.stream.Collectors;
 
 @Service
@@ -48,5 +47,22 @@ public class AnswerSheetService {
         }
 
         answerRepository.saveAllInBulk(answers);
+    }
+
+    @Transactional(readOnly = true)
+    public AnswerSheetResponse.AllInfo getAll(Long formId) {
+        Form form = formRepository.findByIdFetchJoinQuestion(formId)
+                .orElseThrow(() -> new NoSuchElementException("해당 설문지가 존재하지 않습니다."));
+
+        List<AnswerSheetResponse.Info> answerSheets = answerSheetRepository.findAllByFormIdFetchJoinAnswers(formId).stream()
+                .map(AnswerSheetResponse.Info::from)
+                .sorted(Comparator.comparing(AnswerSheetResponse.Info::getCreatedAt))
+                .toList();
+
+        List<QuestionResponse.Info> questions = form.getQuestions().stream()
+                .map(QuestionResponse.Info::from)
+                .toList();
+
+        return new AnswerSheetResponse.AllInfo(questions, answerSheets);
     }
 }
