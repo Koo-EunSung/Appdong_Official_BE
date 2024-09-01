@@ -3,6 +3,7 @@ package com.appdong.website.controller;
 import com.appdong.website.dto.form.FormRequest;
 import com.appdong.website.dto.form.FormResponse;
 import com.appdong.website.service.FormService;
+import io.swagger.v3.oas.annotations.Hidden;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.validation.Valid;
@@ -45,6 +46,7 @@ public class FormController {
         return ResponseEntity.ok(formService.update(request));
     }
 
+    @Hidden
     @DeleteMapping("/{formId}")
     @Operation(summary = "설문지 삭제 API")
     public ResponseEntity<Void> deleteForm(@PathVariable Long formId) {
