@@ -28,7 +28,7 @@ public class FormController {
     }
 
     @GetMapping
-    @Operation(summary = "설문지 목록 조회 API")
+    @Operation(summary = "설문지 목록 조회 API", description = "활성화 상태인 설문지만 조회합니다.")
     public ResponseEntity<List<FormResponse.Introduction>> getActiveFormIntro() {
         return ResponseEntity.ok().body(formService.getActiveForm());
     }
