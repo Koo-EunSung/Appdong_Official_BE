@@ -10,12 +10,13 @@ public class QuestionResponse {
     @Getter
     @AllArgsConstructor
     public static class Info {
+        private Long id;
         private String title;
         private String description;
         private List<String> choice;
 
         public static Info from(Question question) {
-            return new Info(question.getTitle(), question.getDescription(), question.getChoice());
+            return new Info(question.getId(), question.getTitle(), question.getDescription(), question.getChoice());
         }
     }
 }
