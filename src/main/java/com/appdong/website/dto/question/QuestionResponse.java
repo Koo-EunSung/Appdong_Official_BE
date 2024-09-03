@@ -1,6 +1,7 @@
 package com.appdong.website.dto.question;
 
 import com.appdong.website.entity.form.Question;
+import com.appdong.website.entity.form.QuestionType;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 
@@ -14,9 +15,10 @@ public class QuestionResponse {
         private String title;
         private String description;
         private List<String> choice;
+        private QuestionType type;
 
         public static Info from(Question question) {
-            return new Info(question.getId(), question.getTitle(), question.getDescription(), question.getChoice());
+            return new Info(question.getId(), question.getTitle(), question.getDescription(), question.getChoice(), question.getType());
         }
     }
 }
