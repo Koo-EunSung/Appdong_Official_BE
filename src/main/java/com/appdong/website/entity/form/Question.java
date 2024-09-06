@@ -27,6 +27,7 @@ public class Question {
 
     private String title;
     private String description;
+    private boolean required;
 
     @OneToMany(mappedBy = "question")
     private List<Answer> answers = new ArrayList<>();

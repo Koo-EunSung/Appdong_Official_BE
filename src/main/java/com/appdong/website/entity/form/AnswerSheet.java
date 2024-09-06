@@ -35,6 +35,9 @@ public class AnswerSheet {
     @Column(nullable = false)
     private String studentId;
 
+    @Column(nullable = false)
+    private String phoneNumber;
+
     @CreatedDate
     private LocalDateTime createdAt;
 
