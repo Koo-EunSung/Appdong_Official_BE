@@ -16,3 +16,10 @@ logging:
         jdbc:
           core:
             JdbcTemplate: DEBUG
+
+springdoc:
+  use-fqn: true
+  swagger-ui:
+    path: /api-docs
+  paths-to-match: /api/**
+  model-and-view-allowed: true
