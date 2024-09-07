@@ -36,7 +36,7 @@ public class AnswerSheetService {
         Map<Long, Question> questions = form.getQuestions().stream()
                 .collect(Collectors.toMap(Question::getId, question -> question));
 
-        AnswerSheet answerSheet = new AnswerSheet(form, request.getName(), request.getStudentId());
+        AnswerSheet answerSheet = new AnswerSheet(form, request.getName(), request.getStudentId(), request.getPhoneNumber());
         answerSheetRepository.save(answerSheet);
 
         List<Answer> answers = new ArrayList<>();

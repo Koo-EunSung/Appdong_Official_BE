@@ -17,5 +17,6 @@ public class QuestionRequest {
         @NotNull
         private QuestionType type;
         private List<String> choices;
+        private boolean required;
     }
 }

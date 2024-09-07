@@ -35,15 +35,19 @@ public class AnswerSheet {
     @Column(nullable = false)
     private String studentId;
 
+    @Column(nullable = false)
+    private String phoneNumber;
+
     @CreatedDate
     private LocalDateTime createdAt;
 
     @LastModifiedBy
     private LocalDateTime updatedAt;
 
-    public AnswerSheet(Form form, String name, String studentId) {
+    public AnswerSheet(Form form, String name, String studentId, String phoneNumber) {
         this.form = form;
         this.name = name;
         this.studentId = studentId;
+        this.phoneNumber = phoneNumber;
     }
 }
