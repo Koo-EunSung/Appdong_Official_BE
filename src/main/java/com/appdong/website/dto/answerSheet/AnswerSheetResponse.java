@@ -24,6 +24,7 @@ public class AnswerSheetResponse {
         private LocalDateTime createdAt;
         private String name;
         private String studentId;
+        private String phoneNumber;
         private List<AnswerResponse.Info> answers;
 
         public static Info from(AnswerSheet answerSheet) {
@@ -31,7 +32,7 @@ public class AnswerSheetResponse {
                     .map(AnswerResponse.Info::from)
                     .toList();
 
-            return new Info(answerSheet.getCreatedAt(), answerSheet.getName(), answerSheet.getStudentId(), answers);
+            return new Info(answerSheet.getCreatedAt(), answerSheet.getName(), answerSheet.getStudentId(),answerSheet.getPhoneNumber(), answers);
         }
     }
 }
