@@ -44,9 +44,10 @@ public class AnswerSheet {
     @LastModifiedBy
     private LocalDateTime updatedAt;
 
-    public AnswerSheet(Form form, String name, String studentId) {
+    public AnswerSheet(Form form, String name, String studentId, String phoneNumber) {
         this.form = form;
         this.name = name;
         this.studentId = studentId;
+        this.phoneNumber = phoneNumber;
     }
 }

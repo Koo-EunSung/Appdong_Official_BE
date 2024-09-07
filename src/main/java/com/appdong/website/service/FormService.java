@@ -28,7 +28,7 @@ public class FormService {
 
         List<Question> questions = new ArrayList<>();
         for (QuestionRequest.Create question : request.getQuestions())
-            questions.add(new Question(null, form, question.getType(), question.getTitle(), question.getDescription(), null, question.getChoices()));
+            questions.add(new Question(null, form, question.getType(), question.getTitle(), question.getDescription(), question.isRequired(), null, question.getChoices()));
         questionRepository.saveAllInBulk(questions);
     }
 

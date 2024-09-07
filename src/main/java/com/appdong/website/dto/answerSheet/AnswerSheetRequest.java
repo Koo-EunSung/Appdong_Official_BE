@@ -14,10 +14,12 @@ public class AnswerSheetRequest {
     public static class Create {
         @NotNull
         private Long formId;
-        @NotNull
+        @NotBlank
         private String name;
-        @NotNull
+        @NotBlank
         private String studentId;
+        @NotBlank
+        private String phoneNumber;
         @NotBlank
         private List<AnswerRequest.Create> answer;
     }
