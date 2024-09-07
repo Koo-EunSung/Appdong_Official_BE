@@ -32,7 +32,8 @@ jobs:
           mkdir -p ./src/main/resources-env
           cd ./src/main/resources-env
           echo "{{ secrets.APPLICATION_PROD }}" > application-prod.yml
-
+          cat ./src/main/resources-env/application-prod.yml
+          echo "{{ secrets.APPLICATION_PROD }}"
       
       - name: Setup Gradle and Build
         run: |
