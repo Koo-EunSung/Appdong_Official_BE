@@ -32,7 +32,11 @@ jobs:
           cd ./src/main/resources
           echo "${{ secrets.APPLICATION_PROD }}" > application-prod.yml
           echo "${{ secrets.APPLICATION_PROD }}"
-      
+
+      - name: Display application-prod.yml
+        run: |
+          cat ./src/main/resources/application-prod.yml
+
       - name: Setup Gradle and Build
         run: |
           chmod +x ./gradlew
