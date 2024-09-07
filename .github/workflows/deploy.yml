@@ -31,7 +31,7 @@ jobs:
         run: |
           cd ./src/main/resources
           echo "${{ secrets.APPLICATION_PROD }}" > application-prod.yml
-          cat application-prod.yml
+          echo "${{ secrets.APPLICATION_PROD }}"
       
       - name: Setup Gradle and Build
         run: |
