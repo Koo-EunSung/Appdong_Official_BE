@@ -29,7 +29,8 @@ jobs:
       # set up application file
       - name: Create application.yml
         run: |
-          cd ./src/main/resources
+          mkdir -p ./src/main/resources-env
+          cd ./src/main/resources-env
           echo "{{ secrets.APPLICATION_PROD }}" > application-prod.yml
 
       
