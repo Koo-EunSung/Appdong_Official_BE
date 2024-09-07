@@ -22,6 +22,6 @@ public class Answer {
     @JoinColumn
     private Question question;
 
-    @Column(length = 500)
+    @Column(length = 1000)
     private String answer;
 }
