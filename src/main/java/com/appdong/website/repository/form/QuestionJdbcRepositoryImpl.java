@@ -21,7 +21,7 @@ public class QuestionJdbcRepositoryImpl implements QuestionJdbcRepository{
 
     @Transactional
     public void saveAllInBulk(List<Question> questions) {
-        String sql = "INSERT INTO question (form_id, type, title, description, choice, required)" + "VALUES (?, ?, ?, ?, ?, ?)";
+        String sql = "INSERT INTO question (form_id, type, title, description, required, choice)" + "VALUES (?, ?, ?, ?, ?, ?)";
 
         jdbcTemplate.batchUpdate(sql, new BatchPreparedStatementSetter() {
 
@@ -34,7 +34,7 @@ public class QuestionJdbcRepositoryImpl implements QuestionJdbcRepository{
                 ps.setString(4, question.getDescription());
                 ps.setBoolean(5, question.isRequired());
                 try {
-                    ps.setString(5, objectMapper.writeValueAsString(question.getChoice()));
+                    ps.setString(6, objectMapper.writeValueAsString(question.getChoice()));
                 } catch (JsonProcessingException e) {
                     throw new RuntimeException(e);
                 }
