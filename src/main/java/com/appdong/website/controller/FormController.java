@@ -28,10 +28,16 @@ public class FormController {
         return new ResponseEntity<>(HttpStatus.CREATED);
     }
 
-    @GetMapping
+    @GetMapping("/active")
     @Operation(summary = "설문지 목록 조회 API", description = "활성화 상태인 설문지만 조회합니다.")
     public ResponseEntity<List<FormResponse.Introduction>> getActiveFormIntro() {
         return ResponseEntity.ok().body(formService.getActiveForm());
+    }
+
+    @GetMapping
+    @Operation(summary = "전체 설문지 목록 조회 API", description = "모든 설문지를 조회합니다.")
+    public ResponseEntity<List<FormResponse.Introduction>> getAllFormIntro() {
+        return ResponseEntity.ok().body(formService.getAllForm());
     }
 
     @GetMapping("/{formId}")
