@@ -41,6 +41,14 @@ public class FormService {
     }
 
     @Transactional(readOnly = true)
+    public List<FormResponse.Introduction> getAllForm() {
+        return formRepository.findAll()
+                .stream()
+                .map(FormResponse.Introduction::from)
+                .toList();
+    }
+
+    @Transactional(readOnly = true)
     public FormResponse.Detail getDetail(Long id) {
         return formRepository.findById(id)
                 .map(FormResponse.Detail::from)

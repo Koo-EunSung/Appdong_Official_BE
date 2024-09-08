@@ -15,9 +15,10 @@ public class FormResponse {
         private Long id;
         private String title;
         private String description;
+        private boolean active;
 
         public static Introduction from(Form form) {
-            return new Introduction(form.getId(), form.getTitle(), form.getDescription());
+            return new Introduction(form.getId(), form.getTitle(), form.getDescription(), form.isActive());
         }
     }
 
