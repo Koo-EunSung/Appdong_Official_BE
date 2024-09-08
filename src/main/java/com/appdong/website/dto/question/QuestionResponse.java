@@ -16,9 +16,10 @@ public class QuestionResponse {
         private String description;
         private List<String> choice;
         private QuestionType type;
+        private boolean required;
 
         public static Info from(Question question) {
-            return new Info(question.getId(), question.getTitle(), question.getDescription(), question.getChoice(), question.getType());
+            return new Info(question.getId(), question.getTitle(), question.getDescription(), question.getChoice(), question.getType(), question.isRequired());
         }
     }
 }
