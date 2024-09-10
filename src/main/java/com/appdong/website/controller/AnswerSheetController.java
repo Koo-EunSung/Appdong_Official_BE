@@ -14,18 +14,18 @@ import org.springframework.web.bind.annotation.*;
 @Tag(name = "2. AnswerSheet", description = "답변지 관련 API")
 @RestController
 @RequiredArgsConstructor
-@RequestMapping("/api/answer-sheet")
+@RequestMapping
 public class AnswerSheetController {
     private final AnswerSheetService answerSheetService;
 
-    @PostMapping
+    @PostMapping("/api/answer-sheet")
     @Operation(summary = "답변지 생성 API")
     public ResponseEntity<Void> createAnswerSheet(@Valid @RequestBody AnswerSheetRequest.Create request) {
         answerSheetService.createAnswerSheet(request);
         return new ResponseEntity<>(HttpStatus.CREATED);
     }
 
-    @GetMapping
+    @GetMapping("/api/admin/answer-sheet")
     @Operation(summary = "답변지 전체 조회 API", description = """
             특정 설문지의 답변지를 모두 조회한다.
             """)
