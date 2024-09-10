@@ -18,13 +18,14 @@ public class DataInitializer implements CommandLineRunner {
     @Override
     public void run(String... args) throws Exception {
         String username = "admin";
+        userRepository.deleteByUsername(username);
+
         String password = UUID.randomUUID().toString();
 
         User admin = new User(null, username, bCryptPasswordEncoder.encode(password), "ROLE_ADMIN");
 
         userRepository.save(admin);
 
-        System.out.println("admin = " + admin);
         System.out.println("password = " + password);
     }
 }
