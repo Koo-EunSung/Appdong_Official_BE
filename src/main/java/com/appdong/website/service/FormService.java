@@ -23,7 +23,7 @@ public class FormService {
 
     @Transactional
     public void create(FormRequest.Create request) {
-        Form form = new Form(request.getTitle(), request.getDescription());
+        Form form = new Form(request.getTitle(), request.getDescription(), request.getTag());
         formRepository.save(form);
 
         List<Question> questions = new ArrayList<>();
@@ -71,7 +71,7 @@ public class FormService {
         if (request.getDescription() != null)
             description = request.getDescription();
 
-        form.update(title, description);
+        form.update(title, description, request.getTag());
 
         if(request.isUpdateActive())
             form.activationToggle();

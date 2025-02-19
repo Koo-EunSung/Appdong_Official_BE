@@ -26,6 +26,8 @@ public class Form {
 
     private String description;
 
+    private Tag tag;
+
     @OneToMany(mappedBy = "form", cascade = CascadeType.ALL)
     private List<Question> questions = new ArrayList<>();
 
@@ -38,9 +40,10 @@ public class Form {
     @CreatedDate
     private LocalDateTime createdAt;
 
-    public Form(String title, String description) {
+    public Form(String title, String description, Tag tag) {
         this.title = title;
         this.description = description;
+        this.tag = tag;
         this.active = true;
     }
 
@@ -48,8 +51,9 @@ public class Form {
         this.active = !this.active;
     }
 
-    public void update(String title, String description) {
+    public void update(String title, String description, Tag tag) {
         this.title = title;
         this.description = description;
+        this.tag = tag;
     }
 }
